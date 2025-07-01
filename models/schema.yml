@@ -139,3 +139,57 @@ sources:
       # - name: ... # declare properties of additional source tables
 
   # - name: ... # declare properties of additional sources
+
+
+models:
+  - name: finance_days
+    description: Final aggregated table for sales team
+    columns:
+      - name: date_date
+        description: PK for the table
+        tests:
+          - unique
+          - not_null
+      - name: transactions_count
+        description: count of transaction on a day
+      - name: total_revenue
+        description: total revenue for the day
+      - name: average_basket_value
+        description: daily average_basket_value
+      - name: margin
+        description: total margin for the day
+      
+    # ROUND(SUM(o.operational_margin),2) as operational_margin,
+    # ROUND(SUM(o.purchase_cost),2) as total_purchase_cost,
+    # ROUND(SUM(o.ship_cost),2) as total_ship_cost,
+    # ROUND(SUM(o.log_cost),2) as total_log_cost,
+    # ROUND(SUM(o.quantity),2) as total_quantity_sold
+  - name: int_orders_margin
+    description: Final aggregated table for sales team
+
+  - name: int_orders_operational
+    description: Final aggregated table for sales team
+
+  - name: int_sales_margin
+    description: Final aggregated table for sales team
+
+  - name: stg_product
+    description: Final aggregated table for sales team
+    columns:
+      - name: products_id
+        description: PK for the table
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_sales
+    description: Final aggregated table for sales team
+    
+  - name: stg_ship
+    description: Final aggregated table for sales team
+    columns:
+      - name: orders_id
+        description: PK for the table
+        tests:
+          - unique
+          - not_null
