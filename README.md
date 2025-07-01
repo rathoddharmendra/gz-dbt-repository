@@ -13,3 +13,14 @@ Try running the following commands:
 - Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+
+### commands to try:
+`dbt build --select stock_sales.sql+
+dbt run --select +stock_sales.sql
+dbt docs generate
+dbt source freshness`
+
+
+
+Does DBT manages the cost inbuilt or we need to do it? For instance, when there is no change but dbt creates a new view or skips it?
