@@ -12,4 +12,4 @@ result as (
     from source_data
 )
 select *
-from result;
+from result
