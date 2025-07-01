@@ -37,34 +37,69 @@ sources:
         # constraints:
         #   - type: primary_key
         #     columns: [orders_id, pdt_id]
+        config:
+          freshness:
+            warn_after:
+              count: 90
+              period: day
+            # error_after:
+            #   count: 4
+            #   period: day
         columns:
           - name: date_date # required
+            description: sales of Greenweez / order date
+
             # description: <markdown_string>
             # tests:
             #   - test_case # declare  tests
           - name: orders_id # required
+            description: sales of Greenweez / we have on row per product_id found in each orders_id
           - name: pdt_id
+            description: product ID / reference key for products table
           - name: revenue
+            description: total turnover per order
           - name: quantity
+            description: quanity of products per order
             # description: <markdown_string>
             # tests:
             #   - test_case # declare  tests
+        # tests:
+          # - unique:
+          #     combination_of: ['orders_id', 'pdt_id']
+          # - dbt_utils.unique_combination_of_columns:
+          #   combination_of_columns:
+          #     - orders_id
+          #     - pdt_id
+
+
       - name: product
         identifier: raw_gz_product
-        description: has raw sales data entity
+        description: Has raw product data entity
         columns:
           - name: products_id
+            description: unique product ID for GWZ
+            tests:
+              - unique
+              - not_null
           - name: purchSE_PRICE
+            description: product purchase price
 
       - name: ship
         identifier: raw_gz_ship
-        description: has raw sales data entity
+        description: Has raw shipping data entity
         columns:
           - name: orders_id
+            description: FK / PK for sales table / order id for the shipment
+            tests:
+              - unique
+              - not_null
           - name: shipping_fee
+            description: shipping fee charged from the client
           - name: shipping_fee_1
           - name: logCost
+            description: actual logging cost for the shipping
           - name: ship_cost
+            description: actual shipping cost incurred for the shipment
 
       # - name: <string> #required
       #   description: <markdown_string>
