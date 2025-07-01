@@ -1,0 +1,103 @@
+version: 2
+
+sources:
+  - name: raw # required
+    description: GreenWeez Raw Dataset
+    # database: <database_name>
+    schema: <gz_raw_data>
+    # loader: <string>
+    # loaded_at_field: <column_name>
+    # meta: {<dictionary>}
+    # tags: [<string>]
+    
+    # # requires v1.1+
+    # config:
+    #   <source_config>: <config_value>
+    #   freshness: 
+    #     # changed to config in v1.9
+    #     warn_after:
+    #       count: <positive_integer>
+    #       period: minute | hour | day
+    #     error_after:
+    #       count: <positive_integer>
+    #       period: minute | hour | day
+    #     filter: <where-condition>
+      
+    # overrides: <string>
+
+    # quoting:
+    #   database: true | false
+    #   schema: true | false
+    #   identifier: true | false
+
+    tables:
+      - name: raw_gz_sales
+        description: has raw sales data entity
+        # constraints:
+        #   - type: primary_key
+        #     columns: [orders_id, pdt_id]
+        columns:
+          - name: date_date # required
+            # description: <markdown_string>
+            # tests:
+            #   - test_case # declare  tests
+          - name: orders_id # required
+          - name: pdt_id
+          - name: revenue
+          - name: quantity
+            # description: <markdown_string>
+            # tests:
+            #   - test_case # declare  tests
+      - name: raw_gz_product
+        description: has raw sales data entity
+        columns:
+          - name: products_id
+          - name: purchSE_PRICE
+
+      - name: raw_gz_product
+        description: has raw sales data entity
+        columns:
+          - name: orders_id
+          - name: shipping_fee
+          - name: shipping_fee_1
+          - name: logCost
+          - name: ship_cost
+
+      # - name: <string> #required
+      #   description: <markdown_string>
+      #   # meta: {<dictionary>}
+      #   # identifier: <table_name>
+      #   # loaded_at_field: <column_name>
+      #   tests:
+      #     - <test>
+      #     - ... # declare additional tests
+      #   # tags: [<string>]
+      #   # config:
+      #   #   freshness:
+      #   #     warn_after:
+      #   #       count: <positive_integer>
+      #   #       period: minute | hour | day
+      #   #     error_after:
+      #   #       count: <positive_integer>
+      #   #       period: minute | hour | day
+      #   #     filter: <where-condition>
+
+      #   # quoting:
+      #   #   database: true | false
+      #   #   schema: true | false
+      #   #   identifier: true | false
+      #   # external: {<dictionary>}
+      #   columns:
+      #     - name: <column_name> # required
+      #       description: <markdown_string>
+      #       meta: {<dictionary>}
+      #       quote: true | false
+      #       tests:
+      #         - <test>
+      #         - ... # declare additional tests
+      #       tags: [<string>]
+      #     - name: ... # declare properties of additional columns
+
+      # - name: ... # declare properties of additional source tables
+
+  # - name: ... # declare properties of additional sources
