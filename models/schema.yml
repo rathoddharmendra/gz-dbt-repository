@@ -31,7 +31,8 @@ sources:
     #   identifier: true | false
 
     tables:
-      - name: raw_gz_sales
+      - name: sales
+        identifier: raw_gz_sales
         description: has raw sales data entity
         # constraints:
         #   - type: primary_key
@@ -48,13 +49,15 @@ sources:
             # description: <markdown_string>
             # tests:
             #   - test_case # declare  tests
-      - name: raw_gz_product
+      - name: product
+        identifier: raw_gz_product
         description: has raw sales data entity
         columns:
           - name: products_id
           - name: purchSE_PRICE
 
-      - name: raw_gz_product
+      - name: ship
+        identifier: raw_gz_ship
         description: has raw sales data entity
         columns:
           - name: orders_id
