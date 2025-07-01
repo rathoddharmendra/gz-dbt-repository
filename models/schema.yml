@@ -4,7 +4,7 @@ sources:
   - name: raw # required
     description: GreenWeez Raw Dataset
     # database: <database_name>
-    schema: <gz_raw_data>
+    schema: gz_raw_data
     # loader: <string>
     # loaded_at_field: <column_name>
     # meta: {<dictionary>}
