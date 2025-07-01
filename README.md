@@ -20,3 +20,7 @@ Try running the following commands:
 dbt run --select +stock_sales.sql
 dbt docs generate
 dbt source freshness`
+
+
+
+Does DBT manages the cost inbuilt or we need to do it? For instance, when there is no change but dbt creates a new view or skips it?
