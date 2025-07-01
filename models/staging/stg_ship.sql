@@ -7,7 +7,7 @@ result as (
     select
         orders_id,
         shipping_fee,
-        logCost,
+        logCost as log_cost,
         CAST(ship_cost as INT64) as ship_cost
     from source_data
 )

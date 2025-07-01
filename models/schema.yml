@@ -158,20 +158,83 @@ models:
         description: daily average_basket_value
       - name: margin
         description: total margin for the day
-      
-    # ROUND(SUM(o.operational_margin),2) as operational_margin,
-    # ROUND(SUM(o.purchase_cost),2) as total_purchase_cost,
-    # ROUND(SUM(o.ship_cost),2) as total_ship_cost,
-    # ROUND(SUM(o.log_cost),2) as total_log_cost,
-    # ROUND(SUM(o.quantity),2) as total_quantity_sold
+      - name: operational_margin
+        description: total margin minus operation cost
+      - name: total_purchase_cost
+        description: total purchase cost for the day
+      - name: total_log_cost
+        description: actual total cost for logging
+      - name: total_ship_cost
+        description: actual total cost for shipping per day
+      - name: total_quantity_sold
+        description: total products quanity sold for the day
+
   - name: int_orders_margin
     description: Final aggregated table for sales team
+    columns:
+      - name: date_date
+        description: date of the order
+      - name: orders_id
+        description: orders identification number
+        # tests:
+        #   - unique
+        #   - not_null
+      - name: products_id
+        description: product identification number
+      - name: revenue
+        description: totoal turover of the order
+      - name: quantity
+        description: products quantity shipped with the order
+      - name: purchase_cost
+        description: purchase cost - total price for the quantity in order
+      - name: margin
+        description: total margin per order
 
   - name: int_orders_operational
     description: Final aggregated table for sales team
+    columns:
+      - name: date_date
+        description: date of the order
+      - name: orders_id
+        description: orders identification number
+        # tests:
+        #   - unique
+        #   - not_null
+      - name: products_id
+        description: product identification number
+      - name: revenue
+        description: totoal turover of the order
+      - name: quantity
+        description: products quantity shipped with the order
+      - name: purchase_cost
+        description: purchase cost - total price for the quantity in order
+      - name: margin
+        description: total margin per order
+      - name: log_cost
+        description: actual cost for logging
+      - name: ship_cost
+        description: actual cost for shipping per order
+      - name: operational_margin
+        description: margin minus operation cost
 
   - name: int_sales_margin
     description: Final aggregated table for sales team
+    columns:
+      - name: date_date
+        description: date of the order
+      - name: orders_id
+        description: orders identification number
+        # tests:
+        #   - unique
+        #   - not_null
+      - name: products_id
+        description: product identification number
+      - name: revenue
+        description: totoal turover of the order
+      - name: quantity
+        description: products quantity shipped with the order
+      - name: purchase_cost
+        description: purchase cost - total price for the quantity in order
 
   - name: stg_product
     description: Final aggregated table for sales team
@@ -181,9 +244,25 @@ models:
         tests:
           - unique
           - not_null
+      - name: purchase_price
+        description: set price for the product
 
   - name: stg_sales
     description: Final aggregated table for sales team
+    columns:
+      - name: date_date
+        description: date of the order
+      - name: orders_id
+        description: orders identification number
+        # tests:
+        #   - unique
+        #   - not_null
+      - name: products_id
+        description: product identification number
+      - name: revenue
+        description: totoal turover of the order
+      - name: quantity
+        description: products quantity shipped with the order
     
   - name: stg_ship
     description: Final aggregated table for sales team
@@ -193,3 +272,9 @@ models:
         tests:
           - unique
           - not_null
+      - name: shipping_fee
+        description: shipping fee charged on customer
+      - name: log_cost
+        description: actual cost for logging
+      - name: ship_cost
+        description: actual cost for shipping per order
