@@ -8,7 +8,7 @@
 -- Total log costs
 -- Total quantity of products sold.
 
-
+-- {{ config(materialized='table') }}
 select
     o.date_date,
     count(o.orders_id) as transactions_count,
