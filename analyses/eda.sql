@@ -80,11 +80,13 @@
 -- USING (orders_id)
 
 
-select 
-    {{ margin_percent(margin,revenue) }} as margin_percent,
-    margin + ship.shipping_fee - ship.log_cost - ship.ship_cost as operational_margin,
-    *,
-    ship.*
-from {{ ref("int_orders_margin")}} 
-JOIN {{ ref("stg_ship") }} as ship
-USING(orders_id)
+-- select 
+--     {{ margin_percent('margin','revenue') }} as margin_percent,
+--     margin + ship.shipping_fee - ship.log_cost - ship.ship_cost as operational_margin,
+--     *,
+--     ship.*
+-- from {{ ref("int_orders_margin")}} 
+-- JOIN {{ ref("stg_ship") }} as ship
+-- USING(orders_id)
+
+SELECT * FROM {{ ref('stg_product') }}
