@@ -27,6 +27,8 @@ dbt source freshness
             count: 90
             period: day`
 
-
+dbt ls --resource-type snapshot
+dbt debug
 
 Does DBT manages the cost inbuilt or we need to do it? For instance, when there is no change but dbt creates a new view or skips it?
+- dbt deps -- to install packages
