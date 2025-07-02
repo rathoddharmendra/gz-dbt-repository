@@ -50,18 +50,41 @@
     -- where products_id is null
 
 
-with dbt_test__target as (
+-- with dbt_test__target as (
 
-  select campaign_key as unique_field
-  from `data-analytics-ns`.`dbt_drathod`.`int_campaigns`
-  where campaign_key is not null
+--   select campaign_key as unique_field
+--   from `data-analytics-ns`.`dbt_drathod`.`int_campaigns`
+--   where campaign_key is not null
 
-)
+-- )
 
-select
-    unique_field,
-    count(*) as n_records
+-- select
+--     unique_field,
+--     count(*) as n_records
 
-from dbt_test__target
-group by unique_field
-having count(*) > 1
+-- from dbt_test__target
+-- group by unique_field
+-- having count(*) > 1
+
+
+
+
+-- SELECT 
+--     int_orders_margin.*,
+--     {{ margin_percent(int_orders_margin.margin, int_orders_margin.revenue) }} AS margin_percent,
+--     ship.ship_cost AS ship_cost,
+--     ship.log_cost AS log_cost,
+--     int_orders_margin.margin + ship.shipping_fee - ship.log_cost - ship.ship_cost AS operational_margin
+-- FROM {{ ref("int_orders_margin") }} AS int_orders_margin
+-- JOIN {{ ref("stg_ship") }} AS ship
+-- USING (orders_id)
+
+
+select 
+    {{ margin_percent(margin,revenue) }} as margin_percent,
+    margin + ship.shipping_fee - ship.log_cost - ship.ship_cost as operational_margin,
+    *,
+    ship.*
+from {{ ref("int_orders_margin")}} 
+JOIN {{ ref("stg_ship") }} as ship
+USING(orders_id)
