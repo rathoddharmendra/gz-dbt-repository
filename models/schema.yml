@@ -258,7 +258,7 @@ models:
         description: PK for the table
         tests:
           - unique
-          - not_null
+          - table_not_null
       - name: purchase_price
         description: set price for the product
 
@@ -293,3 +293,49 @@ models:
         description: actual cost for logging
       - name: ship_cost
         description: actual cost for shipping per order
+
+  - name: int_campaigns
+    description: combined view of all the campaigns
+    columns:
+      - name: campaign_key
+        # description: PK for the table
+        tests:
+          - not_null
+          # - unique
+      - name: date_date
+        description: date for the campaign
+      - name: paid_source
+        description: Contains one of the paid partners name
+        tests:
+          - accepted_values:
+              values: ['Facebook','Criteo','Bing','Adwords']
+      - name: campaign_name
+        description: campaign unique identified
+
+      - name: ads_cost
+        description: total ads cost per day for the campaigns
+      - name: impression
+        description: total impressions measured against a day for the campaign
+      - name: click
+        description: total clicks generated from a campaign for the day
+
+
+  - name: finance_campaigns_day
+    description: Combined finance daily aggregation with ads cost
+    columns:
+      - name: date_date
+      - name: transactions_count
+      - name: total_revenue
+      - name: average_basket_value
+      - name: margin
+      - name: operational_margin
+      - name: total_purchase_cost
+      - name: total_ship_cost
+      - name: total_log_cost
+      - name: total_quantity_sold
+      - name: ads_cost
+      - name: impression
+      - name: click
+      - name: ads_margin
+    
+    

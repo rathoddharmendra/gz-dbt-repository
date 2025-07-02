@@ -1,6 +1,6 @@
-{% test not_null(model, column_name) %}
+{% test table_not_null(model, column_name) %}
     select 
-        count(*)
+        *
     from {{ model }}
     where {{ column_name }} is null
 {% endtest %}
