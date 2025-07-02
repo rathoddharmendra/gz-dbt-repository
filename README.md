@@ -19,7 +19,13 @@ Try running the following commands:
 `dbt build --select stock_sales.sql+
 dbt run --select +stock_sales.sql
 dbt docs generate
-dbt source freshness`
+dbt source freshness
+`loaded_at_field: CAST(date_date as TIMESTAMP)
+    config:
+        freshness:
+        warn_after:
+            count: 90
+            period: day`
 
 
 

@@ -37,7 +37,7 @@ sources:
         # constraints:
         #   - type: primary_key
         #     columns: [orders_id, pdt_id]
-        loaded_at_field: "CAST(date_date as TIMESTAMP)"
+        loaded_at_field: CAST(date_date as TIMESTAMP)
         config:
           freshness:
             warn_after:
