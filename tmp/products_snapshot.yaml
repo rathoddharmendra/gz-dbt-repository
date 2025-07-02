@@ -1,10 +1,10 @@
 
-# snapshot-specific configuration
-snapshots:
-  - name: 'products_snapshot'
-    resource_path: ref('stg_product')
-    config:
-      database: dbt_snapshot
-      unique_key: products_id
-      strategy: check
-      check_cols: all
+# # snapshot-specific configuration
+# snapshots:
+#   - name: 'products_snapshot'
+#     resource_path: ref('stg_product')
+#     config:
+#       database: dbt_snapshot
+#       unique_key: products_id
+#       strategy: check
+#       check_cols: all

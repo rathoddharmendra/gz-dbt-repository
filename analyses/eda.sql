@@ -67,26 +67,5 @@
 -- having count(*) > 1
 
 
-
-
--- SELECT 
---     int_orders_margin.*,
---     {{ margin_percent(int_orders_margin.margin, int_orders_margin.revenue) }} AS margin_percent,
---     ship.ship_cost AS ship_cost,
---     ship.log_cost AS log_cost,
---     int_orders_margin.margin + ship.shipping_fee - ship.log_cost - ship.ship_cost AS operational_margin
--- FROM {{ ref("int_orders_margin") }} AS int_orders_margin
--- JOIN {{ ref("stg_ship") }} AS ship
--- USING (orders_id)
-
-
--- select 
---     {{ margin_percent('margin','revenue') }} as margin_percent,
---     margin + ship.shipping_fee - ship.log_cost - ship.ship_cost as operational_margin,
---     *,
---     ship.*
--- from {{ ref("int_orders_margin")}} 
--- JOIN {{ ref("stg_ship") }} as ship
--- USING(orders_id)
-
-SELECT * FROM {{ ref('stg_product') }}
+-- SELECT * FROM {{ ref('stg_product') }}
+select * from {{ ref("stg_ship") }}

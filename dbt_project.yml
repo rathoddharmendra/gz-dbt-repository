@@ -28,6 +28,25 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
+# snapshots:
+#   finance:
+#     +target_schema: db_snapshots
+#     +materialized: snapshot
+
+# snapshots:
+#   finance:
+#     +unique_key: "id"
+#     +schema: "snapshots"
+#     +database: "db_snapshots"
+    # +alias: <string>
+    # +unique_key: <column_name_or_expression>
+    # +strategy: check
+    # +updated_at: <column_name>
+    # +check_cols: [<column_name>] | all
+    # +snapshot_meta_column_names: {<dictionary>}
+    # +dbt_valid_to_current: <string> 
+    # +hard_deletes: string
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
