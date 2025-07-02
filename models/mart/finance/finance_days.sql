@@ -1,14 +1,4 @@
--- Date
--- Total number of transactions
--- Total revenue
--- Average Basket
--- Operational Margin
--- Total purchase cost
--- Total shipping fees
--- Total log costs
--- Total quantity of products sold.
-
-
+-- {{ config(materialized='table') }}
 select
     o.date_date,
     count(o.orders_id) as transactions_count,
