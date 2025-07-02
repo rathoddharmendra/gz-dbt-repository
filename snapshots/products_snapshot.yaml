@@ -1,9 +1,0 @@
-snapshots:
-  - name: products_snapshot
-    relation: {{ ref('stg_product') }}
-    description:  creates product snapshot on any column change
-    config:
-      database: dbt_snapshot
-      strategy: check
-      unique_key: products_id
-      check_cols: all
